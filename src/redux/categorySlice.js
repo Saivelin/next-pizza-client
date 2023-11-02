@@ -1,17 +1,11 @@
 const { createSlice } = require("@reduxjs/toolkit");
 
+const defaultValue = {id: 0, title: "Все", value: "all", active: true}
+
 const categorySlice = createSlice({
     name: "category",
     initialState: {
-        categories: [
-            { title: 'Все', active: true, id: 1 },
-            { title: 'Мясные', active: false, id: 2 },
-            { title: 'Вегетарианская', active: false, id: 3 },
-            { title: 'Гриль', active: false, id: 4 },
-            { title: 'Острые', active: false, id: 5 },
-            { title: 'Сырная', active: false, id: 6 },
-            { title: 'Закрытые', active: false, id: 7 },
-        ]
+        categories: []
     },
     reducers: {
         change(state, action) {
@@ -33,10 +27,42 @@ const categorySlice = createSlice({
             else {
                 newActives.find(item => item.id == action.payload).active = true
             }
+            if(newActives[0].id !== 0){
+                newActives.unshift(defaultValue)
+            }
+            else{
+                let activeIsExist = false
+                if(action.payload !== 0){
+                    state.categories.map((cat)=>{
+                        if(cat.id !== 0){
+                            cat.active == true ? activeIsExist = true : null
+                        }
+                    })
+                    if(activeIsExist == true){
+                        newActives[0].active = false
+                    }
+                }
+                else if(action.payload == 0){
+                    newActives = newActives.map((el)=>{
+                        if(el.id !== 0){
+                            el.active = false
+                        }
+                        else{
+                            el.action = true
+                        }
+                        return el
+                    })
+                }
+            }
             state.categories = newActives//.find(item => item.active == true)//.find(item => item.id == -1)
+        },
+        set(state, action){
+            let newActives = [...action.payload]
+            newActives.unshift(defaultValue)
+            state.categories = newActives
         }
     }
 })
 
 export default categorySlice.reducer
-export const { change } = categorySlice.actions
+export const { change, set } = categorySlice.actions

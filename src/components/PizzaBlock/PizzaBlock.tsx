@@ -5,19 +5,20 @@ import styleButton from '../../style/UI/Buttons.module.scss'
 import classNames from 'classnames';
 import Image from 'next/image';
 
-const PizzaBlock = ({ title, price, image, types, sizes }) => {
+const PizzaBlock = ({ title, price, image, types, sizes } : {title:any, price:any, image:any, types:any, sizes:any}) => {
 	const typeNames = ['тонкое', 'традиционное']
 	const [activeType, setActiveType] = useState([0]);
 	const [activeSize, setActiveSize] = useState([0]);
 	return (
 		<div className={css.pizzaBlock}>
-			<Image
+			{/* <Image
 				fill={true}
 				className={css.pizzaBlock__image}
 				src={image}
 				alt="Pizza"
-			/>
+			/> */}
 			<h4 className={css.pizzaBlock__title}>{title}</h4>
+            {types && types.length > 0 || sizes && sizes.length > 0 ? 
 			<div className={css.pizzaBlock__selector}>
 				<ul>
 					{types.map((typeId) => (<li onClick={() => setActiveType(typeId)} className={activeType == typeId ? css.active : ''} key={typeId.id}>{typeNames[typeId]}</li>))}
@@ -26,6 +27,7 @@ const PizzaBlock = ({ title, price, image, types, sizes }) => {
 					{sizes.map((size, i) => (<li onClick={() => setActiveSize(i)} className={activeSize == i ? css.active : ''} key={size.id}>{size}</li>))}
 				</ul>
 			</div>
+            : null}
 			<div className={css.pizzaBlock__bottom}>
 				<div className={css.pizzaBlock__price}>от {price} ₽</div>
 				<button className={classNames(styleButton.button, styleButton.button__outline, styleButton.button__add)}>
