@@ -69,3 +69,23 @@
 		letter-spacing: 0.015em;
 	}
 }
+
+.PizzaBlockSkeleton{
+    &>*{
+        opacity: 0;
+    }
+    animation: pizza-block-skeleton 2s infinite cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    border-radius: 20px;
+}
+
+@keyframes pizza-block-skeleton{
+    0%{
+        background-color: rgb(243, 241, 241);
+    }
+    50%{
+        background-color: rgb(219, 216, 216);
+    }
+    100%{
+        background-color: rgb(243, 241, 241);
+    }
+}

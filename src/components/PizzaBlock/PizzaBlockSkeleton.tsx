@@ -5,12 +5,12 @@ import styleButton from '../../style/UI/Buttons.module.scss'
 import classNames from 'classnames';
 import Image from 'next/image';
 
-const PizzaBlock = ({ title, price, image, types, sizes } : {title:any, price:any, image:any, types:any, sizes:any}) => {
+const PizzaBlockSkeleton = ({ title, price, image, types, sizes } : {title:any, price:any, image:any, types:any, sizes:any}) => {
 	const typeNames = ['тонкое', 'традиционное']
 	const [activeType, setActiveType] = useState([0]);
 	const [activeSize, setActiveSize] = useState([0]);
 	return (
-		<div className={css.pizzaBlock}>
+		<div className={classNames(css.pizzaBlock, css.PizzaBlockSkeleton)}>
 			<Image
 				fill={true}
 				className={css.pizzaBlock__image}
@@ -51,4 +51,4 @@ const PizzaBlock = ({ title, price, image, types, sizes } : {title:any, price:an
 	);
 };
 
-export default PizzaBlock;
+export default PizzaBlockSkeleton;

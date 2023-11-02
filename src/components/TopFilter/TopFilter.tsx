@@ -11,12 +11,6 @@ import axios from 'axios';
 import axConf from "@/axios"
 
 const TopFilter = () => {
-    const [pizzas, setPizzas] = useState([])
-
-    useEffect(()=>{
-        axios.get(`product?get=6&page=0`, axConf).then((res)=>{setPizzas(res.data)})
-    }, [])
-
 	return (
 		<div className={css.topFilter}>
 			<div className={css.topFilter__top}>
@@ -24,7 +18,7 @@ const TopFilter = () => {
 				<Sort />
 			</div>
 			<h2 className={css.topFilter__title}>Все пиццы</h2>
-            <PizzaPage pizzas={pizzas}/>
+            <PizzaPage pizzasMock={pizzasMock}/>
 			{/* <div className={css.topFilter__items}>
 				{pizzas.map((pizzas) => (<PizzaBlock key={pizzas.id}  {...pizzas} />))}
 			</div> */}
