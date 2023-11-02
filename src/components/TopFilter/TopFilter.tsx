@@ -18,7 +18,7 @@ const TopFilter = () => {
 				<Sort />
 			</div>
 			<h2 className={css.topFilter__title}>Все пиццы</h2>
-            <PizzaPage pizzasMock={pizzasMock}/>
+            <PizzaPage pizzasMock={pizzasMock} pagination={true}/>
 			{/* <div className={css.topFilter__items}>
 				{pizzas.map((pizzas) => (<PizzaBlock key={pizzas.id}  {...pizzas} />))}
 			</div> */}

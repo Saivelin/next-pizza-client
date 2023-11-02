@@ -1,5 +1,27 @@
+@import "../../style/variables.scss";
+
 .Catalog{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+}
+
+.PaginationWrapper{
+    margin: 0 auto;
+    .Pagination{
+        display: flex;
+        justify-content: center;
+        column-gap: 10px;
+        .Item{
+            padding: 15px 20px;
+            border-radius: 8px;
+            color: $black;
+            background-color: $gray-line;
+            cursor: pointer;
+        }
+        .ItemActive{
+            color: $gray-line;
+            background-color: $orange;
+        }
+    }
 }
