@@ -4,13 +4,14 @@ import css from './PizzaBlock.module.scss'
 import styleButton from '../../style/UI/Buttons.module.scss'
 import classNames from 'classnames';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 
 const PizzaBlock = ({ title, price, image, types, sizes } : {title:any, price:any, image:any, types:any, sizes:any}) => {
 	const typeNames = ['тонкое', 'традиционное']
 	const [activeType, setActiveType] = useState([0]);
 	const [activeSize, setActiveSize] = useState([0]);
 	return (
-		<div className={css.pizzaBlock}>
+		<motion.div initial={{opacity: 0}} animate={{opacity: 1}} className={css.pizzaBlock}>
 			<Image
 				fill={true}
 				className={css.pizzaBlock__image}
@@ -47,7 +48,7 @@ const PizzaBlock = ({ title, price, image, types, sizes } : {title:any, price:an
 					<i>0</i>
 				</button>
 			</div>
-		</div >
+		</motion.div >
 	);
 };
 
